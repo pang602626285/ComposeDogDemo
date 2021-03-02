@@ -20,8 +20,8 @@ buildscript {
 
     repositories {
         maven{url 'http://mirrors.cloud.tencent.com/nexus/repository/maven-public/'}
-//        google()
-//        jcenter()
+        google()
+        jcenter()
     }
 
     dependencies {
@@ -37,8 +37,8 @@ plugins {
 subprojects {
     repositories {
         maven{url 'http://mirrors.cloud.tencent.com/nexus/repository/maven-public/'}
-//        google()
-//        jcenter()
+        google()
+        jcenter()
     }
 
     apply plugin: 'com.diffplug.spotless'
