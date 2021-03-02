@@ -19,9 +19,9 @@ buildscript {
     ext.compose_version = '1.0.0-beta01'
 
     repositories {
-        maven{url 'http://mirrors.cloud.tencent.com/nexus/repository/maven-public/'}
-        google()
-        jcenter()
+        maven{url 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/'}
+//        google()
+//        jcenter()
     }
 
     dependencies {
@@ -36,9 +36,9 @@ plugins {
 
 subprojects {
     repositories {
-        maven{url 'http://mirrors.cloud.tencent.com/nexus/repository/maven-public/'}
-        google()
-        jcenter()
+        maven{url 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/'}
+//        google()
+//        jcenter()
     }
 
     apply plugin: 'com.diffplug.spotless'

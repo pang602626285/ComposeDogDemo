@@ -66,9 +66,7 @@ fun MainHome() {
         } else {
             DogDetail(dog = mainVM.curDog!!, snackbarHostState)
         }
-
     }
-
 }
 
 @Composable
@@ -78,7 +76,8 @@ private fun DogList(onClick: (Dog) -> Unit) {
         LazyColumn {
             items(it) { dog ->
                 DogItem(
-                    dog = dog, modifier = Modifier
+                    dog = dog,
+                    modifier = Modifier
                         .fillMaxWidth()
                         .clickable { onClick(dog) }
                 )
@@ -86,7 +85,6 @@ private fun DogList(onClick: (Dog) -> Unit) {
         }
     }
 }
-
 
 @Composable
 fun DogItem(dog: Dog, modifier: Modifier) {
@@ -104,11 +102,9 @@ fun DogItem(dog: Dog, modifier: Modifier) {
             Column {
                 Text(text = dog.name, color = Color.Black, style = MaterialTheme.typography.h4)
                 Text(text = dog.detail, color = Color.Yellow)
-
             }
         }
     }
-
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
