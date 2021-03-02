@@ -17,12 +17,12 @@ package com.example.androiddevchallenge.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
@@ -40,24 +40,27 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.bean.Dog
-import com.example.androiddevchallenge.vm.MainVH
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.androiddevchallenge.bean.Dog
 import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.example.androiddevchallenge.vm.MainVH
 
 // Start building your app here!
 @Composable
 fun MainHome() {
     val snackbarHostState = SnackbarHostState()
     val mainVM = viewModel<MainVH>()
-    Scaffold(modifier = Modifier.fillMaxWidth(),
+    Scaffold(
+        modifier = Modifier.fillMaxWidth(),
         topBar = {
             TopAppBar(
                 title = {
                     Text("Select your favorite Dog!", color = Color.White)
                 }
             )
-        }, snackbarHost = { SnackbarHost(hostState = snackbarHostState) }) {
+        },
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
+    ) {
         if (mainVM.curDog == null) {
             DogList { dog -> mainVM.curDog = dog }
         } else {
