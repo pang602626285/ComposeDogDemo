@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
+
     val snackbarHostState = SnackbarHostState()
 
     // Start building your app here!
@@ -76,13 +77,12 @@ class MainActivity : AppCompatActivity() {
     fun MyApp() {
         Scaffold(modifier = Modifier.fillMaxWidth(),
             topBar = {
-
                 TopAppBar(
                     title = {
                         Text("Select your favorite Dog!", color = Color.White)
                     }
                 )
-            },snackbarHost = { SnackbarHost(hostState = snackbarHostState)}) {
+            }, snackbarHost = { SnackbarHost(hostState = snackbarHostState) }) {
             if (mainVM.curDog == null) {
                 DogList { dog -> onDogClick(dog) }
             } else {

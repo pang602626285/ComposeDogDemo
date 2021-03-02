@@ -8,7 +8,7 @@ import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.bean.Dog
 
 class MainVH : ViewModel() {
-    var curDog:Dog? by  mutableStateOf(null)
+    var curDog: Dog? by mutableStateOf(null)
 
 
     val dataList by mutableStateOf(
