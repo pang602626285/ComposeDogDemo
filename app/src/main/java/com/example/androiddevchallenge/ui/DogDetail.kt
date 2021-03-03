@@ -58,6 +58,6 @@ fun DogDetail(dog: Dog, snackbarHostState: SnackbarHostState) {
 
 @Preview
 @Composable
-fun PreDogDetail(){
+fun PreDogDetail() {
     DogDetail(dog = MainVM().dataList[0], snackbarHostState = SnackbarHostState())
 }
