@@ -40,16 +40,15 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.bean.Dog
 import com.example.androiddevchallenge.ui.theme.MyTheme
-import com.example.androiddevchallenge.vm.MainVH
+import com.example.androiddevchallenge.vm.MainVM
 
 // Start building your app here!
 @Composable
-fun MainHome() {
+fun MainHome(mainVM: MainVM) {
     val snackbarHostState = SnackbarHostState()
-    val mainVM = viewModel<MainVH>()
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
         topBar = {
@@ -62,7 +61,7 @@ fun MainHome() {
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
     ) {
         if (mainVM.curDog == null) {
-            DogList { dog -> mainVM.curDog = dog }
+            DogList(mainVM.dataList) { dog -> mainVM.curDog = dog }
         } else {
             DogDetail(dog = mainVM.curDog!!, snackbarHostState)
         }
@@ -70,9 +69,8 @@ fun MainHome() {
 }
 
 @Composable
-private fun DogList(onClick: (Dog) -> Unit) {
-    val mainVM = viewModel<MainVH>()
-    mainVM.dataList.let {
+private fun DogList(dataList: List<Dog>, onClick: (Dog) -> Unit) {
+    dataList.let {
         LazyColumn {
             items(it) { dog ->
                 DogItem(
@@ -107,11 +105,33 @@ fun DogItem(dog: Dog, modifier: Modifier) {
     }
 }
 
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
+@Preview
+@Composable
+fun DogListPreview() {
+    MyTheme {
+        DogList(
+            dataList = listOf(
+                Dog("Lili", R.drawable.dog1, 1),
+                Dog("Sasa", R.drawable.dog2, 2),
+                Dog("Hali", R.drawable.dog3, 5),
+                Dog("PeHa", R.drawable.dog4, 7),
+                Dog("Mate", R.drawable.dog5, 3),
+                Dog("Peny", R.drawable.dog6, 8),
+                Dog("Huyi", R.drawable.dog7, 2),
+                Dog("pety", R.drawable.dog8, 9),
+                Dog("Wuli", R.drawable.dog9, 11),
+                Dog("Jick", R.drawable.dog10, 8),
+            ),
+            onClick = { }
+        )
+    }
+}
+
+@Preview("Light Theme")
 @Composable
 fun LightPreview() {
     MyTheme {
-        MainHome()
+        MainHome(MainVM())
     }
 }
 
@@ -119,6 +139,6 @@ fun LightPreview() {
 @Composable
 fun DarkPreview() {
     MyTheme(darkTheme = true) {
-        MainHome()
+        MainHome(MainVM())
     }
 }

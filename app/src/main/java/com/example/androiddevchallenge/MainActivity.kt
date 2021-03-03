@@ -21,15 +21,15 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androiddevchallenge.ui.MainHome
 import com.example.androiddevchallenge.ui.theme.MyTheme
-import com.example.androiddevchallenge.vm.MainVH
+import com.example.androiddevchallenge.vm.MainVM
 
 class MainActivity : AppCompatActivity() {
-    private val mainVM by viewModels<MainVH>()
+    private val mainVM by viewModels<MainVM>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                MainHome()
+                MainHome(mainVM)
             }
         }
     }

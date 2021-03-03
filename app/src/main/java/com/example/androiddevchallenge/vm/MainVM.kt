@@ -22,7 +22,7 @@ import androidx.lifecycle.ViewModel
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.bean.Dog
 
-class MainVH : ViewModel() {
+class MainVM : ViewModel() {
     var curDog: Dog? by mutableStateOf(null)
 
     val dataList by mutableStateOf(
